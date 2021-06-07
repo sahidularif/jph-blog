@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Card, Col, Container, Form, Row, Button, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams } from 'react-router';
@@ -12,11 +12,17 @@ import { useHistory } from 'react-router-dom';
 const EditPost = () => {
     const { id } = useParams();
     const [allPost] = useContext(postsContext);
-    const [postUpdateData, setPostUpdateData] = useState({ title: "", body: "" });
+    const [postUpdateData, setPostUpdateData] = useState({ title: "", body: "" });    
+    const [updateSuccess, setUpdateSuccess] = useState(false);
     const myPost = allPost.find((post) => post.id == id);
-    console.log(myPost?.id)
-    const [ updateSuccess, setUpdateSuccess ] = useState(false);
     const history = useHistory();
+
+    useEffect(() => {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        .then((response) => response.json())
+        .then((data) => setPostUpdateData(data));
+    }, [id]);
+
     const handleSubmit = () => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${myPost?.id}`, {
             method: 'PUT',
@@ -29,9 +35,9 @@ const EditPost = () => {
             .then(() => setUpdateSuccess(true))
         setTimeout(function () {
             setUpdateSuccess(false);
-            // history.push({
-            //     pathname: `/users`
-            // })
+            history.push({
+                pathname: `/profile`
+            })
         }, 5000);
     }
 
@@ -55,21 +61,17 @@ const EditPost = () => {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="title"
-                                    name="title"
-                                    value={myPost?.title}
+                                    value={postUpdateData.title}
                                     onChange={(e) =>
                                         setPostUpdateData({ ...postUpdateData, title: e.target.value })
                                     }
                                     placeholder="Enter post title"
                                 />
                                 <Form.Control as="textarea"
-                                    id="body"
-                                    name="body"
-                                    value={myPost?.body}
                                     onChange={(e) =>
-                                        setPostUpdateData({ ...postUpdateData, title: e.target.value })
+                                        setPostUpdateData({ ...postUpdateData, body: e.target.value })
                                     }
+                                    value={postUpdateData.body}
                                     placeholder="Enter post body"
                                     rows={4}
                                     className="mb-4"
