@@ -10,7 +10,8 @@ import EditPost from './components/EditPost/EditPost';
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import CreatePost from './components/CreatePost/CreatePost';
-
+import PostDetails from './components/PostDetails/PostDetails';
+import AllUser from './components/AllUser/AllUser';
 export const postsContext = createContext();
 export const userContext = createContext();
 
@@ -38,6 +39,8 @@ function App() {
               <Route path="/profile" component={Profile}></Route>
               <Route path="/edit-posts/:id" component={EditPost}></Route>
               <Route path="/createPost" component={CreatePost}></Route>
+              <Route path="/post-details/:id" component={PostDetails}></Route>
+              <Route path="/users" component={AllUser}></Route>
             </Switch>
           </Router>
         </userContext.Provider>

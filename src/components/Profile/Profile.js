@@ -64,7 +64,7 @@ const Profile = () => {
                                             }</Card.Title>
                                             <Card.Text>{post.body.slice(0, 60)}</Card.Text>
                                             <span className="d-flex justify-content-between">
-                                                <Link to={`/edit-posts/${post.id}`}>
+                                                <Link to={`/post-details/${post.id}`}>
                                                     <Button size="sm" variant="link">Read More</Button>
                                                 </Link>
                                                 <Link to={`/edit-posts/${post.id}`}>

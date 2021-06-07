@@ -1,7 +1,7 @@
 .leftSide{
     width:20%;
     height:100%;
-    background-color:#4e657a;
+    border-right: 1px solid powderblue;
     position:fixed;
     left:0;
     float:left;
