@@ -16,7 +16,7 @@ const Navs = () => {
           <span className="mes text-primary my-auto"><FontAwesomeIcon icon={faUser} /> Ervin Howell</span>
         } className="mes text-light navbar-light" id="collasible-nav-dropdown">
           <NavDropdown.Item><Link to="/profile">Profile</Link></NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.1">Create post</NavDropdown.Item>
+          <NavDropdown.Item><Link to="/createPost">Create new post</Link></NavDropdown.Item>
           
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.2">All users</NavDropdown.Item>

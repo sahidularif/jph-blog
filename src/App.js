@@ -9,6 +9,7 @@ import './App.css';
 import EditPost from './components/EditPost/EditPost';
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
+import CreatePost from './components/CreatePost/CreatePost';
 
 export const postsContext = createContext();
 export const userContext = createContext();
@@ -36,6 +37,7 @@ function App() {
               <Route exact path="/" component={Home}></Route>
               <Route path="/profile" component={Profile}></Route>
               <Route path="/edit-posts/:id" component={EditPost}></Route>
+              <Route path="/createPost" component={CreatePost}></Route>
             </Switch>
           </Router>
         </userContext.Provider>

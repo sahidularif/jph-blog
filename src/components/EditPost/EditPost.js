@@ -53,20 +53,23 @@ const EditPost = () => {
                     <LeftSide />
                 </Col>
                 <Col sm={7} className="p-5 mainContent">
-                    <Card className="text-dark">
+                    <Card className="text-dark border-0">
                         {updateSuccess && <Alert variant="success">Post Updated</Alert>}
                         <Card.Title>Update post</Card.Title>
                         <form onSubmit={e => handleSubmit(e)}>
-                            <div className="form-group col-md-8">
+                            <div className="form-group col-md-8 border-0">
+                            <label for="title">Post title</label>
                                 <input
                                     type="text"
-                                    className="form-control"
+                                    id="title"
+                                    className="form-control mb-2"
                                     value={postUpdateData.title}
                                     onChange={(e) =>
                                         setPostUpdateData({ ...postUpdateData, title: e.target.value })
                                     }
                                     placeholder="Enter post title"
                                 />
+                                 <label for="body" className="mt-2">Post description</label>
                                 <Form.Control as="textarea"
                                     onChange={(e) =>
                                         setPostUpdateData({ ...postUpdateData, body: e.target.value })
@@ -75,6 +78,7 @@ const EditPost = () => {
                                     placeholder="Enter post body"
                                     rows={4}
                                     className="mb-4"
+                                    id="body"
                                 />
                                 <Button variant="info" onClick={handleSubmit}><FontAwesomeIcon icon={faSave} /> Save</Button>
                             </div>
